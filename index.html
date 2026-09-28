@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los 50 de Roberto Luna</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'Poppins', sans-serif;
+            background: #080f1e;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- PANTALLA PRINCIPAL DE INTRODUCCIÓN --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: 
+                linear-gradient(rgba(8, 15, 30, 0.75), rgba(4, 8, 16, 0.92)),
+                url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Destellos dorados sutiles */
+        .hero::before, .section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 10%, transparent 11%),
+                        radial-gradient(circle, rgba(255,255,255,0.05) 5%, transparent 6%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: brillarFestivo 5s infinite alternate ease-in-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes brillarFestivo {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 18, 35, 0.8);
+            padding: 40px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.8rem;
+            color: #fff;
+            text-shadow: 
+                0 0 12px #d4af37,
+                0 0 25px rgba(212,175,55,0.5);
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-top: 15px;
+            background: linear-gradient(45deg, #d4af37, #f3e5ab, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.tagline {
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #dcdcdc;
+            margin-top: 8px;
+            font-weight: 300;
+        }
+
+        .hero button {
+            margin-top: 35px;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #d4af37, #fff, #d4af37);
+            background-size: 200% auto;
+            color: #080f1e;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transition: 0.4s ease;
+            animation: latidoBoton 2.5s infinite;
+        }
+
+        .hero button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.8);
+        }
+
+        @keyframes latidoBoton {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+            50% { transform: scale(1.04); box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+        }
+
+        /* --- PÁGINA PRINCIPAL DE LA INVITACIÓN --- */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: 
+                linear-gradient(rgba(8, 15, 30, 0.85), rgba(4, 8, 16, 0.96)),
+                url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .fade-in {
+            animation: aparecer 0.8s ease forwards;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            max-width: 850px;
+            width: 100%;
+            margin: auto;
+            background: rgba(12, 22, 42, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 50px 30px;
+            border-radius: 35px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(212,175,55,0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(212,175,55,0.5), 0 0 25px rgba(212,175,55,0.3);
+            margin-top: -10px;
+        }
+
+        .age {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(45deg, #d4af37, #f3e5ab, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .since-year {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.3rem;
+            color: #d4af37;
+            margin-top: 5px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .quote {
+            font-size: 1.15rem;
+            margin: 25px auto 15px auto;
+            max-width: 600px;
+            font-style: italic;
+            line-height: 1.8;
+            color: #e2e2e2;
+            border-left: 3px solid #d4af37;
+            border-right: 3px solid #f3e5ab;
+            padding: 0 20px;
+        }
+
+        /* Frase de brindis resaltada */
+        .toast-phrase {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.4rem;
+            color: #f3e5ab;
+            margin-bottom: 40px;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
+            letter-spacing: 1px;
+            animation: brilloBrindis 3s infinite alternate;
+        }
+
+        @keyframes brilloBrindis {
+            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); opacity: 0.9; }
+            100% { text-shadow: 0 0 20px #d4af37, 0 0 10px #fff; opacity: 1; }
+        }
+
+        /* --- CONTENEDOR DE VIÑETAS EN DOS FILAS CENTRADAS --- */
+        .details-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        .details-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .detail-box {
+            background: rgba(8, 15, 30, 0.9);
+            padding: 25px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: 0.3s ease;
+            min-width: 220px;
+            flex: 1;
+            max-width: 320px;
+        }
+
+        .detail-box:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .detail-box h3 {
+            color: #d4af37;
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .detail-box p {
+            font-size: 1.05rem;
+            color: #dcdcdc;
+        }
+
+        /* Sección Cuenta Regresiva */
+        .countdown-title {
+            margin-top: 55px;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #f3e5ab;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .time-box {
+            background: rgba(8, 15, 30, 0.95);
+            padding: 18px;
+            border-radius: 18px;
+            width: 95px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d4af37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Botones de acción */
+        .buttons {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 16px 35px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .maps {
+            background: linear-gradient(45deg, #d4af37, #f3e5ab);
+            color: #080f1e;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 25px rgba(255,255,255,0.15);
+        }
+
+        /* Galería de fotos (Marco Polaroid) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            background: white;
+            padding: 12px 12px 28px 12px;
+            border-radius: 4px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            transform: rotate(calc(var(--i, 0) * 2.5deg));
+            transition: 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: rotate(0deg) scale(1.08);
+            z-index: 5;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 2px;
+            background: #1a1a1a;
+        }
+
+        /* --- FOOTER CON ESTILO RESALTADO --- */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background: #040810;
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        footer h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #f3e5ab;
+            text-shadow: 0 0 10px rgba(243, 229, 171, 0.4);
+            margin-bottom: 10px;
+        }
+
+        .highlight-footer {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            display: block;
+            margin-top: 15px;
+        }
+
+        /* Celulares */
+        @media(max-width:768px){
+            .hero h1 { font-size: 3.5rem; }
+            .hero h2 { font-size: 1.7rem; }
+            .name { font-size: 3.2rem; }
+            .age { font-size: 4.2rem; }
+            .card { padding: 40px 15px; }
+            .hero button { padding: 15px 35px; font-size: 1rem; }
+            .toast-phrase { font-size: 1.9rem; }
+            .detail-box { width: 100%; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Local -->
+    <audio id="music" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- INTRODUCCIÓN ESPECTACULAR -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Roberto Luna</h1>
+            <h2>MIS 50 AÑOS</h2>
+            <p class="tagline">Since 1974 ✨</p>
+            <button onclick="openInvitation()">Abrir Invitación 🍾</button>
+        </div>
+    </section>
+
+    <!-- PÁGINA PRINCIPAL DE LA TARJETA -->
+    <section class="section fade-in" id="invitation" style="display:none;">
+        <div class="card">
+            <div class="age">MIS 50 AÑOS</div>
+            <div class="name">Roberto Luna</div>
+            <div class="since-year">Since 1974</div>
+
+            <p class="quote">
+                "Media vida celebrando momentos inolvidables, y lo mejor es seguir compartiéndolos con quienes más quiero."
+            </p>
+            
+            <div class="toast-phrase">¡Brindemos juntos por este gran momento! 🥂✨</div>
+
+            <!-- VIÑETAS DE INFORMACIÓN -->
+            <div class="details-container">
+                <!-- Primera fila: Fecha y Hora -->
+                <div class="details-row">
+                    <div class="detail-box">
+                        <h3>📅 Fecha</h3>
+                        <p>10 de octubre de 2026</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>🕣 Hora</h3>
+                        <p>20:00 hs</p>
+                    </div>
+                </div>
+                <!-- Segunda fila: Dirección -->
+                <div class="details-row" style="justify-content: center;">
+                    <div class="detail-box" style="max-width: 460px; flex: unset; width: 100%;">
+                        <h3>📍 Dirección</h3>
+                        <p>Av. Iriarte 2332</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="countdown-title">Cuenta regresiva</h2>
+
+            <div class="countdown">
+                <div class="time-box"><span id="days">0</span>Días</div>
+                <div class="time-box"><span id="hours">0</span>Horas</div>
+                <div class="time-box"><span id="minutes">0</span>Min</div>
+                <div class="time-box"><span id="seconds">0</span>Seg</div>
+            </div>
+
+            <div class="buttons">
+                <!-- Enlace de WhatsApp -->
+                <a class="btn whatsapp" 
+                   href="https://wa.me/5491136386078?text=Hola%20Roberto,%20confirmo%20mi%20asistencia%20a%20tu%20cumpleaños%20🎉" 
+                   target="_blank">
+                    Confirmar asistencia
+                </a>
+
+                <a class="btn maps" 
+                   href="https://maps.google.com/?q=Av+Iriarte+2332+Buenos+Aires" 
+                   target="_blank">
+                    Ver ubicación
+                </a>
+            </div>
+
+            <!-- Galería de fotos (Polaroid) -->
+            <div class="gallery">
+                <div class="gallery-item" style="--i: -1;">
+                    <img src="roberto1.jpg" alt="Foto Roberto 1">
+                </div>
+                <div class="gallery-item" style="--i: 0;">
+                    <img src="roberto2.jpg" alt="Foto Roberto 2">
+                </div>
+                <div class="gallery-item" style="--i: 1;">
+                    <img src="roberto3.jpg" alt="Foto Roberto 3">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <h3>¡Espero contar con tu presencia! ❤️</h3>
+        <span class="highlight-footer">Una noche única para festejar a lo grande.</span>
+    </footer>
+
+    <script>
+        function openInvitation(){
+            document.querySelector('.hero').style.display = 'none';
+            document.getElementById('invitation').style.display = 'flex';
+            
+            const audio = document.getElementById('music');
+            audio.load(); 
+            
+            setTimeout(function(){
+                audio.play().catch(function(error) {
+                    console.log("Audio con restricciones de reproducción: ", error);
+                });
+            }, 100);
+        }
+
+        /* Cuenta regresiva ajustada al 10 de octubre de 2026 a las 20:00 hs */
+        const targetDate = new Date("October 10, 2026 20:00:00").getTime();
+
+        const timer = setInterval(function(){
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerHTML = 0;
+                document.getElementById("hours").innerHTML = 0;
+                document.getElementById("minutes").innerHTML = 0;
+                document.getElementById("seconds").innerHTML = 0;
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+        }, 1000);
+    </script>
+</body>
+</html>
